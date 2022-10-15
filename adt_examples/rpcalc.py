@@ -4,10 +4,12 @@ import math
 class RPCalc:
 
     def __init__(self):
+        """Initialise stack for calculator"""
         self.stack = []
         self.operators = ("+", "-", "*", "/", "sin", "cos")
 
     def push(self, n):
+        """Implement method for pushing to stack"""
         if n not in self.operators:
             self.stack.append(n)
         else:
@@ -35,10 +37,13 @@ class RPCalc:
                 self.stack.append(num1 / num2)
 
     def pop(self):
+        """Implement method to pop stack"""
         return self.stack.pop()
 
     def peek(self):
+        """Implement method to peek at stack"""
         return self.stack[-1]
 
     def __len__(self):
+        """Method for determining number of elements in stack"""
         return len(self.stack)
