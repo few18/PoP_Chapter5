@@ -1,3 +1,7 @@
+"""
+This module implements a class to compute fibonacci sequence.
+"""
+
 class Fib:
     """Class to compute fibonacci sequence."""
 

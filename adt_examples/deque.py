@@ -1,8 +1,13 @@
+"""
+This module implements a deque type data structure.
+"""
+
+
 class Deque:
     """Implementation of Deque type struct."""
 
     def __init__(self, n):
-        """Initialise the deque"""
+        """Initialise the deque."""
         self.ring = [None] * n
         self.right = 0
         self.left = 0
@@ -10,7 +15,7 @@ class Deque:
         self.length = 0
 
     def append(self, x):
-        """Implement method to right append value to deque"""
+        """Implement method to right append value to deque."""
         if not self.length:
             self.ring[self.right] = x
         else:
@@ -19,7 +24,7 @@ class Deque:
         self.length += 1
 
     def appendleft(self, x):
-        """Implement method to left append value to deque"""
+        """Implement method to left append value to deque."""
         if not self.length:
             self.ring[self.left] = x
         else:
@@ -28,7 +33,7 @@ class Deque:
         self.length += 1
 
     def pop(self):
-        """Implement method to pop element from the right"""
+        """Implement method to pop element from the right."""
         self.length -= 1
         val = self.ring[self.right]
         self.ring[self.right] = None
@@ -36,7 +41,7 @@ class Deque:
         return val
 
     def popleft(self):
-        """Implement method to pop element from the left"""
+        """Implement method to pop element from the left."""
         self.length -= 1
         val = self.ring[self.left]
         self.ring[self.left] = None
@@ -44,26 +49,27 @@ class Deque:
         return val
 
     def peek(self):
-        """Implement method to peek at rightmost element"""
+        """Implement method to peek at rightmost element."""
         return self.ring[self.right]
 
     def peekleft(self):
-        """Implement method to peek at leftmost element"""
+        """Implement method to peek at leftmost element."""
         return self.ring[self.left]
 
     def __len__(self):
-        """Method to determine length of deque"""
+        """Method to determine length of deque."""
         return self.length
 
     def __iter__(self):
-        """Method for Iter protocol"""
+        """Method for Iter protocol."""
         return DequeIter(self)
 
 
 class DequeIter:
+    """Iteration object for protocol."""
 
     def __init__(self, deque):
-        """Initialise the iter object"""
+        """Initialise the iter object."""
         self.here = deque.left
         self._ring = deque.ring
         self.stop = deque.right
@@ -71,7 +77,7 @@ class DequeIter:
         self.passed_stop = 0
 
     def __next__(self):
-        """Method to determine next element of iteration"""
+        """Method to determine next element of iteration."""
         if not self.passed_stop:
             if self.here == self.stop:
                 self.passed_stop = 1
